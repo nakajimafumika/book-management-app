@@ -1,0 +1,23 @@
+<div th:fragment="starRating">
+  <span th:if="${review == null || review == 0.0}" class="text-center d-block">
+    <strong>評価：</strong> 評価なし
+  </span>
+ 
+  <div th:if="${review != null}" class="d-flex justify-content-center align-items-center gap-2">
+    <strong>評価：</strong>
+	<span>
+	  <span th:if="${fullStars > 0}" th:each="i : ${#numbers.sequence(1, book.fullStars)}">
+	    <i class="fa-solid fa-star text-warning"></i>
+	  </span>
+	  <span th:if="${book.hasHalfStar}">
+	    <i class="fa-solid fa-star-half-stroke text-warning"></i>
+	  </span>
+	  <span th:if="${emptyStars > 0}" th:each="i : ${#numbers.sequence(1, book.emptyStars)}">
+	    <i class="fa-regular fa-star text-warning"></i>
+	  </span>
+	</span>
+ 
+    <span th:text="${review + ' / 5'}">0/ 5</span>
+  </div>
+</div>
+ 

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{bookSystem/common/layout}">
+
+<head>
+<title>貸出・予約状況一覧</title>
+<!-- css -->
+<link rel="stylesheet" th:href="@{/css/common/layout.css}">
+
+<!-- js -->
+<script type="module" th:src="@{/js/book-return-and-cancel.js}"></script>
+
+</head>
+
+<body>
+  <section layout:fragment="content">
+    <div class="container">
+      <!-- タイトル -->
+      <div class="row justify-content-center mt-4">
+        <div class="col-md-4 text-center">
+          <h2>貸出・予約状況一覧</h2>
+        </div>
+      </div>
+
+      <div class="row mt-5 mb-5">
+        <!-- 左側：貸出状況 -->
+        <div class="col-md-6">
+          <h4 class="mb-3">貸出状況</h4>
+          <table class="table table-hover table-bordered">
+            <thead class="table-light">
+              <tr>
+                <th>書籍名</th>
+                <th>返却日</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- サーバー側でメッセージを渡した場合 -->
+              <tr th:if="${loanMessage != null}">
+                <td colspan="3" class="text-center text-muted" th:text="${loanMessage}"></td>
+              </tr>
+
+              <!-- リストがある場合 -->
+              <tr th:each="loan : ${loanList}">
+                <td th:text="${loan.title}"></td>
+                <td th:text="${loan.returnDueDate}"></td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#returnModal"
+                    th:attr="data-id=${loan.loanId}, data-title=${loan.title}">返却</button>
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+        <!-- 右側：予約状況 -->
+        <div class="col-md-6">
+          <h4 class="mb-3">予約状況</h4>
+          <table class="table table-hover table-bordered">
+            <thead class="table-light">
+              <tr>
+                <th>書籍名</th>
+                <th>予約開始日</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- サーバー側でメッセージが渡された場合 -->
+              <tr th:if="${reserveMessage != null}">
+                <td colspan="3" class="text-center text-muted" th:text="${reserveMessage}"></td>
+              </tr>
+
+              <!-- リストがある場合 -->
+              <tr th:each="reserve : ${reserveList}">
+                <td th:text="${reserve.title}"></td>
+                <td th:text="${reserve.reservesDate}"></td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#cancelModal"
+                    th:attr="data-id=${reserve.reserveId}, data-title=${reserve.title}">予約キャンセル</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- メニューに戻るボタン -->
+      <div class="row">
+        <div class="col text-start">
+          <a th:href="@{/book/menu}" class="btn btn-secondary mt-2"> <i class="fa-solid fa-arrow-left me-2"></i> メニュー画面に戻る
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!--返却・キャンセルモーダル-->
+    <div th:replace="~{bookSystem/bookStatus/book-return :: returnModal}"></div>
+    <div th:replace="~{bookSystem/bookStatus/book-reserve-cancel :: cancelModal}"></div>
+    
+        <!-- ここにモーダルを差し込む -->
+        <div th:replace="component/registerLoadModal :: registerModal"></div>
+
+  </section>
+
+</body>
+</html>

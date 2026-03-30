@@ -1,0 +1,31 @@
+/*「入力フォームの必須ラベルに、カーソルを合わせると横に赤いツールチップが出る」CSS*/
+.field {
+  position: relative; /* コンテナ基準 */
+}
+
+label.required {
+  position: relative;
+  display: inline-block;
+}
+
+label.required .tooltip {
+  position: absolute;
+  top: 50%;              /* ラベルの縦中央に固定 */
+  left: 100%;            /* ラベルの右端に固定 */
+  margin-left: 8px;      /* ラベルとの間に余白 */
+  transform: translateY(-50%);
+  background: #ff4d4d;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;            /* 初期は非表示 */
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* ラベルにカーソルが乗った時、または入力欄にカーソルが乗った時 */
+.field:hover label.required .tooltip {
+  opacity: 1;
+}

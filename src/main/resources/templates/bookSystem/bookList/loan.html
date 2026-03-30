@@ -1,0 +1,56 @@
+<div th:fragment="loanModal">
+  <!-- 貸出モーダル -->
+  <div class="modal fade" id="loanModal" tabindex="-1" aria-labelledby="loanModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <!-- モーダルヘッダー -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="loanModalLabel">貸出確認</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+        </div>
+
+        <!-- モーダル本文 -->
+        <div class="modal-body">
+          <form id="loanForm">
+            <input type="hidden" name="managementId" id="managementIdLoan"  th:value="${book.managementId}" /> 
+
+            <div class="text-center fs-5 fw-bold">貸出希望日を選択してください</div>
+
+            <div class="border border-primary rounded p-2 text-center mt-2">
+              選択された日付: <span id="selectedDateDisplayLoan">未選択</span>
+            </div>
+            <br>
+            <div class="calendar-note">
+              ※予約期間は最大1か月後まで選択可能<br> ※貸出開始日は変更できません。返却日を選択してください。
+            </div>
+
+            <div class="text-end">
+              <button id="resetLoanDateButton" class="btn btn-secondary" type="button">日付をリセット</button>
+            </div>
+
+            <!--　カレンダー　-->
+            <div class="d-flex justify-content-center">
+              <div id="calendarContainerLoan"></div>
+            </div>
+            
+            <!--貸出制限警告-->
+            <div id="loanWarning" class="alert alert-danger mt-5 d-none"></div>
+
+           　<!--　ログインユーザーの予約日があった場合凡例を表示　-->
+            <div id="calendarLegend" class="calendar-legend"></div>
+
+            <div class="d-flex justify-content-end gap-2 mt-5">
+              <button type="button" id="modal_loan_button" class="btn btn-warning">貸出する</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+            </div>
+          </form>
+          
+          <!-- 完了メッセージ　-->
+          <div id="loanSuccessMessage" class="alert alert-success mt-3 d-none" role="alert">貸出が完了しました。</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

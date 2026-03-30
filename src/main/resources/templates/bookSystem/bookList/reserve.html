@@ -1,0 +1,55 @@
+<div th:fragment="reserveModal">
+  <!-- 予約モーダル -->
+  <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <!-- モーダルヘッダー -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="reserveModalLabel">予約確認</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+        </div>
+
+        <!-- モーダル本文 -->
+        <div class="modal-body">
+
+            <input type="hidden" name="managementId" id="managementIdReserve" th:value="${book.managementId}" />
+            
+            <div class="text-center fs-5 fw-bold">予約希望日を選択してください</div>
+
+            <div class="border border-primary rounded p-2 text-center mt-2">
+              選択された日付: <span id="selectedDateDisplay">未選択</span>
+            </div>         
+       
+            <div class="text-end my-4">
+              <button id="resetReserveDateButton" class="btn btn-secondary" type="button">日付をリセット</button>
+            </div>
+           
+            <!--カレンダー-->
+            <div class="d-flex justify-content-center my-4">
+              <div id="calendarContainer"></div>
+            </div>
+            
+           　<!--予約制限警告-->
+            <div id="reserveWarning" class="alert alert-danger d-none"></div>
+            
+  
+            <div>※予約済み日・貸出期間はカレンダー上で選択できません
+				<br>※貸出期間は最大1か月後まで選択可能
+			</div>
+			
+
+            <div class="d-flex justify-content-end gap-2">
+                <button id="modal_reserve_button" type="button" class="btn btn-primary">予約する</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+            </div>
+  
+          
+          <!-- 完了メッセージ-->
+          <div id="reserveCompleteMessage" class="alert alert-success mt-3 d-none" role="alert">予約が完了しました。</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

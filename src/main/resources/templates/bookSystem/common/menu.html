@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{bookSystem/common/layout}">
+
+<head>
+<title>メニュー</title>
+<link rel="stylesheet" th:href="@{/css/common/menu.css}">
+</head>
+
+<body class="menu-page">
+  <section layout:fragment="content">
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-4 text-center">
+
+        <h3>メニュー</h3>
+      </div>
+    </div>
+
+    <div class="d-grid gap-3 col-8 col-md-4 mx-auto p-5">
+
+      <a th:href="@{/book/list}"     class="btn btn-book">書籍一覧・貸出/予約</a>
+      <a th:href="@{/book/status}"   class="btn btn-loan">貸出/予約状況・返却</a>
+      <a th:href="@{/book/request}"  class="btn btn-request">リクエスト</a>
+      <a th:href="@{/book/register}" class="btn btn-register">書籍登録</a>
+    </div>
+
+
+    <div class="text-center mt-3 mb-4">
+      <a th:href="@{/home}" class="btn btn-back px-4">戻る</a>
+    </div>
+  </section>
+</body>
+</html>
+
+

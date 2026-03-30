@@ -1,0 +1,38 @@
+@charset "UTF-8";
+.reservation_button {
+  background-color: #00A6A6;       /* 爽やかで視認性の高いブルーグリーン */
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.reservation_button:hover {
+  background-color: #008C8C;       /* ホバー時に少し濃く */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+
+
+.loan_button {
+  background-color: #FF6F61;       /* 明るめのオレンジで目立つ */
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.loan_button:hover {
+  background-color: #E65C50;       /* ホバー時に濃くして操作感UP */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+

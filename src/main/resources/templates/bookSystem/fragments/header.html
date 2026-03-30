@@ -1,0 +1,25 @@
+<div th:fragment="header">
+
+  <div class="navbar container-fluid d-flex align-items-center justify-content-between px-3 py-2"
+    style="position: relative;">
+    <a class="navbar-brand fw-bold text-white fs-4" href="#">書籍管理システム</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse bg-light py-2" id="navbarMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" th:href="@{/book/list}">書籍一覧・貸出/予約</a></li>
+
+        <li class="nav-item"><a class="nav-link" th:href="@{/book/status}">貸出/予約状況・返却</a></li>
+
+        <li class="nav-item"><a class="nav-link" th:href="@{/book/request}">リクエスト</a></li>
+
+        <li class="nav-item"><a class="nav-link" th:href="@{/book/register}">書籍登録</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>

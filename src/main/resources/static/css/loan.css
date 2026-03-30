@@ -1,0 +1,31 @@
+
+.user-reserved {
+  border-radius: 0 !important;
+  border-bottom: 3px solid #ffeb3b !important; /* 黄色の下線 */
+}
+
+
+.calendar-note {
+  background-color: #fffbe6;
+  border: 1px solid #ffd700;
+  padding: 8px;
+  margin-bottom: 12px;
+  font-size: 0.95em;
+}
+
+
+.legend-box {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+}
+
+.legend-box.yellow {
+  background-color: yellow;
+}
+
+
+

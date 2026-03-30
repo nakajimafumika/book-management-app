@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title layout:title-pattern="$CONTENT_TITLE - 書籍管理システム">書籍管理システム</title>
+<link rel="stylesheet" th:href="@{/css/common/layout.css}">
+<!-- bootstrap -->
+<link rel="stylesheet" th:href="@{/css/common/bootstrap.min.css}">
+<script defer th:src="@{/js/common/bootstrap.bundle.min.js}"></script>
+
+<!-- csrfトークンPOSTの際に必要 -->
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+</head>
+
+
+<body>
+  <header class="custom-header text-white border-bottom py-3">
+	<div th:replace="~{bookSystem/fragments/header :: header}"></div>
+  </header>
+
+  <main>
+	<div class="container-sm mt-4 mb-5">
+      <section layout:fragment="content"></section>
+    </div>
+  </main>
+
+
+
+  <!-- フッター -->
+  <footer class="bg-light text-center text-muted py-1 border-top fixed-bottom">
+    <div th:replace="bookSystem/fragments/footer :: footer"></div>
+  </footer>
+
+ <script th:inline="javascript">
+  const CONTEXT_ROOT = /*[[@{/}]]*/ "";
+  const CONTEXT_PATH = CONTEXT_ROOT.endsWith('/') ? CONTEXT_ROOT.slice(0, -1) : CONTEXT_ROOT;
+  window.__BASE_URL = CONTEXT_PATH; // 外部JSから利用可
+</script>
+
+</body>
+</html>
+

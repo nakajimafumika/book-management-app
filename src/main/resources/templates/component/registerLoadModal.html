@@ -1,0 +1,24 @@
+<!-- component/registerLoadModal.html -->
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true"
+     th:fragment="registerModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title">処理状況</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+
+        <div id="modalMessage">登録中...</div>
+        <div id="loadingSpinner" class="spinner-border text-primary mt-3"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="closeModalBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="display:none;">
+          閉じる
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

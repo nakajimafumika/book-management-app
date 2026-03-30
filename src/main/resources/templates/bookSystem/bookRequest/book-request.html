@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{bookSystem/common/layout}">
+
+<head>
+<title>書籍リクエスト</title>
+<!-- css -->
+<link rel="stylesheet" th:href="@{/css/common/layout.css}">
+
+<link rel="stylesheet" th:href="@{/css/book-register.css}">
+
+<!-- js -->
+<script type="module" th:src="@{/js/book-request.js}"></script>
+</head>
+
+<body>
+  <section layout:fragment="content">
+    <div class="container">
+      <div class="row">
+        <!-- タイトル -->
+        <div class="row justify-content-center mt-4">
+          <div class="col-md-4 text-center">
+            <h2>書籍リクエスト</h2>
+          </div>
+        </div>
+
+        <!-- 入力欄 -->
+        <div class="container mt-5 mb-5">
+          <div class="row">
+            <!-- 左側：書籍情報 -->
+            <div class="col-md-6 offset-md-2">
+              <div class="mb-3 field">
+                <label for="isbnCode" class="form-label required"> ISBN <span class="text-danger">*</span> <span
+                  class="tooltip">必須</span>
+                </label>
+                <div class="input-group">
+                  <input type="number" id="isbnCode" class="form-control" placeholder="ISBNコードを入力してください">
+                  <button id="searchButton" class="btn btn-primary btn-sm">検索</button>
+                </div>
+              </div>
+
+              <div class="mb-3 field">
+                <label for="title" class="form-label required"> タイトル <span class="text-danger">*</span> <span
+                  class="tooltip">必須</span>
+                </label> <input type="text" id="title" class="form-control" placeholder="タイトルを入力">
+              </div>
+
+              <div class="mb-3 field">
+                <label for="author" class="form-label required"> 著者 <span class="text-danger">*</span> <span
+                  class="tooltip">必須</span>
+                </label> <input type="text" id="author" class="form-control" placeholder="著者を入力">
+              </div>
+
+              <div class="mb-3 field">
+                <label for="publisher" class="form-label required">参考URL </label> <input type="text" id="url"
+                  class="form-control" placeholder="amazon等の通販URLを記載">
+              </div>
+
+              <div class="mb-3 field">
+                <label for="publicationDate" class="form-label required">メモ</label>
+                <textarea id="memo" class="form-control" placeholder="リクエスト理由等、自由に記述" rows="4"
+                  maxlength="200"></textarea>
+              </div>
+
+
+
+              <p class="text-muted">※ISBNコード・タイトル・著者は必須です</p>
+            </div>
+
+            <!-- 右側：表紙画像 -->
+            <div class="col-md-4 text-center">
+
+              <!-- 初期状態はd-none で非表示にする-->
+              <img id="bookImage" class="img-fluid d-none" style="max-width: 200px;" alt="書影">
+
+            </div>
+          </div>
+        </div>
+        <!-- リクエスト送信ボタン -->
+        <div class="d-flex justify-content-center mt-3">
+          <button id="registerButton" class="btn btn-primary btn-lg">リクエスト送信</button>
+        </div>
+
+        <!-- ここにモーダルを差し込む -->
+        <div th:replace="component/registerLoadModal :: registerModal"></div>
+
+
+
+      </div>
+    </div>
+
+    <!-- メニューに戻るボタン -->
+    <a th:href="@{/book/menu}" class="btn btn-secondary mt-2"> <i class="fa-solid fa-arrow-left me-2"></i> メニュー画面に戻る
+    </a>
+  </section>
+</body>
+</html>
